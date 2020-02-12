@@ -2,7 +2,7 @@ const {performance} = require('perf_hooks');
 
 function countCommonCharacters(s1, s2){
     //creating the time limit counter
-    let t0 = performance.now;
+    let t0 = performance.now();
 
     //creating counter for the matches
     let c = 0;
@@ -20,8 +20,8 @@ function countCommonCharacters(s1, s2){
             chars.splice(index, 1);
         }
     }
-    let t1 = performance.now;
-    //console.log(`Took ${t1 - t0} milliseconds to be executed`);
+    let t1 = performance.now();
+    console.log(`Took ${t1 - t0} milliseconds to be executed`);
 
     return c;
 }

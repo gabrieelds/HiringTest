@@ -2,7 +2,7 @@ const {performance} = require('perf_hooks');
 
 function luckyNumber(n) {
     //creating the time limit counter
-    let t0 = performance.now;
+    let t0 = performance.now();
 
     //convert the input number into string
     const numbers = String(n);
@@ -27,8 +27,8 @@ function luckyNumber(n) {
     }, 0);
 
 
-    let t1 = performance.now;
-    //console.log(`Took ${t1 - t0} milliseconds to be executed`);
+    let t1 = performance.now();
+    console.log(`Took ${t1 - t0} milliseconds to be executed`);
 
     //compare the sequences
     return seq1 === seq2;
