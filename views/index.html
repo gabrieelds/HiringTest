@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Gabriel Test">
+    <meta name="author" content="Gabriel">
+    <meta name="keywords" content="Gabriel">
+
+    <title>Hiring Test</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="text-center border border-light p-5">
+
+                    <p class="h4 mb-4">Question 1</p>
+
+                    <input type="text" id="string1Question1" class="form-control mb-4" placeholder="First String">
+
+                    <input type="text" id="string2Question1" class="form-control mb-4" placeholder="Second String">
+                    <br/>
+                    <button class="btn btn-info btn-block my-4" id="btnQuestion1" onClick="sendQuestion1();" >Try!</button>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="text-center border border-light p-5">
+
+                    <p class="h4 mb-4">Question 2</p>
+
+                    <input type="text" id="hourQuestion2" class="form-control mb-4" placeholder="Hour">
+
+                    <input type="text" id="minuteQuestion2" class="form-control mb-4" placeholder="Minute">
+                    <br/>
+                    <button class="btn btn-info btn-block my-4" id="btnQuestion2" onClick="sendQuestion2();">Try!</button>
+
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="text-center border border-light p-5">
+
+                    <p class="h4 mb-4">Question 3</p>
+
+                    <input type="text" id="luckyNumberQuestion3" class="form-control mb-4" placeholder="Lucky Number">
+
+                    <br/>
+                    <button class="btn btn-info btn-block my-4" id="btnQuestion3" onClick="sendQuestion3();">Try!</button>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="text-center border border-light p-5">
+
+                    <p class="h4 mb-4">Question 4</p>
+
+                    <input type="text" id="linesQuestion4" class="form-control mb-4" placeholder="Number of Lines">
+
+                    <br/>
+                    <button class="btn btn-info btn-block my-4" id="btnQuestion4" onClick="sendQuestion4();">Try!</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function sendQuestion1(){
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:3000/test1',
+                data:{
+                    'string1': $('#string1Question1').val(),
+                    'string2': $('#string2Question1').val()
+                },
+                dataType: 'json'
+            })
+            .done(function(data){
+                alert('ANSWER: ' + JSON.stringify(data, "", 2));
+            })
+            .fail(function(jqXHR, textStatus, err){
+                console.log('Erro! ', textStatus);
+            });
+        }
+        function sendQuestion2(){
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:3000/test2',
+                data:{
+                    'hour': $('#hourQuestion2').val(),
+                    'minute': $('#minuteQuestion2').val()
+                },
+                dataType: 'json'
+            })
+            .done(function(data){
+                alert('ANSWER: ' + data);
+            })
+            .fail(function(jqXHR, textStatus, err){
+                console.log('Erro! ', textStatus);
+            });
+        }
+        function sendQuestion3(){
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:3000/test3',
+                data:{
+                    'number': $('#luckyNumberQuestion3').val()
+                },
+                dataType: 'json'
+            })
+            .done(function(data){
+                alert('ANSWER: ' + data);
+            })
+            .fail(function(jqXHR, textStatus, err){
+                console.log('Erro! ', textStatus);
+            });
+        }
+        function sendQuestion4(){
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:3000/test4',
+                data:{
+                    'lines': $('#linesQuestion4').val()
+                },
+                dataType: 'json'
+            })
+            .done(function(data){
+                alert(data);
+            })
+            .fail(function(jqXHR, textStatus, err){
+                console.log('Erro! ', textStatus);
+            });
+        }
+    </script>    
+
+</body>
+
+</html>
