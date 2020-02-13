@@ -36,5 +36,5 @@ app.post('/test4', function(req, res){
 });
 
 app.listen(3000, function(){
-    console.log('Servidor rodando na url http://localhost:3000');
+    console.log('Server running at http://localhost:3000');
 });
